@@ -1,0 +1,25 @@
+{
+  "name": "attendance-management-api",
+  "version": "1.0.0",
+  "description": "Serverless attendance management API (Express + Lambda + MySQL)",
+  "main": "src/handler.js",
+  "scripts": {
+    "dev": "node src/local.js",
+    "deploy": "serverless deploy",
+    "offline": "serverless offline"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+  "dotenv": "^16.4.5",
+  "express": "^4.21.1",
+  "mysql2": "^3.11.3",
+  "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "serverless": "^3.39.0",
+    "serverless-offline": "^13.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
