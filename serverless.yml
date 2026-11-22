@@ -18,6 +18,13 @@ provider:
     NODE_ENV: ${env:NODE_ENV, 'production'}
   httpApi:
     cors: true
+  # When RDS is private, uncomment and set your VPC (Lambda must reach RDS):
+  # vpc:
+  #   securityGroupIds:
+  #     - sg-xxxxxxxx
+  #   subnetIds:
+  #     - subnet-xxxxxxxx
+  #     - subnet-yyyyyyyy
 
 plugins:
   - serverless-offline
