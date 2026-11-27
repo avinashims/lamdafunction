@@ -1,0 +1,29 @@
+{
+  "name": "hotel-management-serverless",
+  "version": "1.0.0",
+  "description": "Hotel management REST API on AWS Lambda with Express.js and MySQL",
+  "main": "src/handler.js",
+  "scripts": {
+    "dev": "node src/local.js",
+    "deploy": "serverless deploy",
+    "deploy:prod": "serverless deploy --stage prod",
+    "offline": "serverless offline",
+    "db:init": "node scripts/init-db.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "helmet": "^7.1.0",
+    "mysql2": "^3.11.0",
+    "serverless-http": "^3.2.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "serverless": "^3.39.0",
+    "serverless-offline": "^13.6.0"
+  }
+}

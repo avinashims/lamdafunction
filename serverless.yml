@@ -1,0 +1,43 @@
+service: hotel-management-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  memorySize: 512
+  timeout: 29
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT, '3306'}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    DB_NAME: ${env:DB_NAME}
+    NODE_ENV: ${self:provider.stage}
+  # Uncomment when MySQL runs in VPC (e.g. RDS)
+  # vpc:
+  #   securityGroupIds:
+  #     - ${env:LAMBDA_SECURITY_GROUP_ID}
+  #   subnetIds:
+  #     - ${env:LAMBDA_SUBNET_ID_1}
+  #     - ${env:LAMBDA_SUBNET_ID_2}
+
+functions:
+  api:
+    handler: src/handler.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+      - httpApi:
+          path: /
+          method: ANY
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 3000
